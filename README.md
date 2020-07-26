@@ -5,7 +5,7 @@ Home: http://enblend.sourceforge.net/
 
 Package license: GPL-2.0-only
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Enblend combines images that overlap like this into a single large image with no seams.
 
