@@ -43,6 +43,7 @@ requirements:
     - libcblas
     - perl
   run:
+    - vigra
     - gsl
 
 test:
