@@ -53,7 +53,6 @@ test:
     - enfuse --help
     # Print capabilities in log
     - enblend -v -V
-    - enblend -v -V | grep "OpenMP: yes"  # [unix]
 
 about:
   home: http://enblend.sourceforge.net/
