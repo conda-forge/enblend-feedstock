@@ -18,6 +18,7 @@ cmake \
     -DCMAKE_PREFIX_PATH=${PREFIX}                                         \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}                                      \
     -DENABLE_OPENMP=ON                                                    \
+    -DENABLE_OPENCL=ON                                                    \
     ..
 
 make -j${CPU_COUNT}

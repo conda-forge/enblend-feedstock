@@ -14,7 +14,7 @@ source:
   url: https://github.com/ramonaoptics/enblend-code/archive/{{ version }}.tar.gz
   sha256: b9510a419cb23f2964d6095bc295f9b19097362c05723425e78b0497741dcc17
   patches:
-    - windows_compatibility_fixmath_h.patch
+    - windows_opencl_compatibility.patch
     # Remove once we move to gcc 9+
     - experimental_filesystem.patch  # [linux]
     # Use of std::filesystem requires macOS 10.15+
@@ -48,16 +48,28 @@ requirements:
     - libblas
     - libcblas
     - perl
+    # I tried compiling with the 2.0.13 headers, but it didn't work
+    # enblend code is quite old. Needs migration to get to 2.0.13
+    - clhpp 2.0.10
+    # While the source only depends on the clhpp headers
+    # depending on ocl-icd will ensure we have the correct run-export
+    # dependency at runtime
+    - ocl-icd                    # [linux]
+    - khronos-opencl-icd-loader  # [win or osx]
   run:
     - vigra
     - gsl
 
 test:
+  requires:
+    # Question??? is this the correct way to do this? what should the user depend on?
+    - pocl  >=0.14      # [linux]
   commands:
     - enblend --help
     - enfuse --help
     # Print capabilities in log
-    - enblend -v -V
+    # Window seems to crash likely because it cannot find an OCL implementation
+    - enblend -v -V     # [not win]
 
 about:
   home: http://enblend.sourceforge.net/
