@@ -21,7 +21,11 @@ source:
     - 0001-Revert-Update-filenameparse.cc-module-to-reflect-the.patch  # [osx]
     - 0002-Make-CMAKE_INSTALL_PREFIX-override-conditional.patch
     - 0003-Avoid-usage-of-.value-which-requires-macOS-10.14.patch
-    - openmp_nested_deprecation.patch
+    # Linux gives deprecation warnings about using
+    # omp_get_nested/omp_set_nested
+    # But windows compilers don't have omp_get_max_active_levels
+    # as of 2021/03/28 on conda-forge
+    - openmp_nested_deprecation.patch  # [not win]
 
 build:
   number: 3
