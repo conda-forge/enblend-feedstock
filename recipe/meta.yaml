@@ -58,17 +58,12 @@ requirements:
     # depending on ocl-icd will ensure we have the correct run-export
     # dependency at runtime
     - ocl-icd                    # [linux]
-    - khronos-opencl-icd-loader  # [osx]
+    - khronos-opencl-icd-loader  # [not linux]
   run:
     - vigra
     - gsl
-    - ocl-icd-system         # [linux]
-    - ocl_icd_wrapper_apple  # [osx]
 
 test:
-  # requires:
-    # Question??? is this the correct way to do this? what should the user depend on?
-  #   - pocl  >=0.14      # [linux]
   commands:
     - enblend --help
     - enfuse --help
