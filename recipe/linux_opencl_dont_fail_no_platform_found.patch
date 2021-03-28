@@ -1,0 +1,19 @@
+diff --git a/src/opencl.cc b/src/opencl.cc
+index b394757..756b53f 100644
+--- a/src/opencl.cc
++++ b/src/opencl.cc
+@@ -517,7 +517,13 @@ namespace ocl
+     print_opencl_information(bool all_devices)
+     {
+         platform_list_t platforms;
+-        cl::Platform::get(&platforms);
++        try {
++            cl::Platform::get(&platforms);
++        } catch (const cl::Error &e) {
++            std::cout << "cl::Error(" << e.err() << "): " << e.what() << std::endl;
++            std::cout << "  - no platform found\n";
++            return;
++        }
+ 
+         if (platforms.empty())
+         {

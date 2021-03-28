@@ -14,7 +14,8 @@ source:
   url: https://github.com/ramonaoptics/enblend-code/archive/{{ version }}.tar.gz
   sha256: b9510a419cb23f2964d6095bc295f9b19097362c05723425e78b0497741dcc17
   patches:
-    - windows_compatibility_fixmath_h.patch
+    - windows_opencl_compatibility.patch
+    - linux_opencl_dont_fail_no_platform_found.patch
     # Remove once we move to gcc 9+
     - experimental_filesystem.patch  # [linux]
     # Use of std::filesystem requires macOS 10.15+
@@ -28,7 +29,7 @@ source:
     - openmp_nested_deprecation.patch  # [not win]
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -48,6 +49,16 @@ requirements:
     - libblas
     - libcblas
     - perl
+    # Compiling with OpenCL
+    # https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/1379
+    # I tried compiling with the 2.0.13 headers, but it didn't work
+    # enblend code is quite old. Needs migration to get to 2.0.13
+    - clhpp 2.0.10
+    # While the source only depends on the clhpp headers
+    # depending on ocl-icd will ensure we have the correct run-export
+    # dependency at runtime
+    - ocl-icd                    # [linux]
+    - khronos-opencl-icd-loader  # [not linux]
   run:
     - vigra
     - gsl

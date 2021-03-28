@@ -1,0 +1,55 @@
+diff --git a/src/fixmath.h b/src/fixmath.h
+index f10333f..ee29fcd 100644
+--- a/src/fixmath.h
++++ b/src/fixmath.h
+@@ -1791,7 +1791,11 @@ public:
+         gsl_function cost = {ciecam_detail::delta_e_min_cost, &extra};
+         cmsJCh opt_jch = *jch;
+         double delta_e_1d = 0.0;
++#ifdef _WIN32
++        double delta_e_2d = 0.0;
++#else
+         double delta_e_2d __attribute__((unused)) = 0.0;
++#endif
+ 
+         if (EXPECT_RESULT(detail::bracket_minimum(cost, guessed_j,
+                                                   0.0, std::max(static_cast<double>(Scale::MAXIMUM_LIGHTNESS), jch->J),
+diff --git a/src/opencl.cc b/src/opencl.cc
+index b394757..9284237 100644
+--- a/src/opencl.cc
++++ b/src/opencl.cc
+@@ -18,6 +18,9 @@
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  */
+ 
++#ifdef _WIN32
++#include <Windows.h>
++#endif
+ 
+ #include <algorithm>
+ #include <cassert>
+@@ -488,7 +491,7 @@ namespace ocl
+ #ifdef _WIN32
+         // on Windows fixed paths would be too restricting
+         // construct the search path relative to the binary path
+-        char buffer[MAX_PATH]; //always use MAX_PATH for filepaths
++        char buffer[MAX_PATH+1]; //always use MAX_PATH for filepaths
+         GetModuleFileName(NULL, buffer, sizeof(buffer));
+         std::string working_path(buffer);
+         //remove filename
+diff --git a/src/opencl_vigra.h b/src/opencl_vigra.h
+index 9f151b1..8836adb 100644
+--- a/src/opencl_vigra.h
++++ b/src/opencl_vigra.h
+@@ -365,7 +365,11 @@ namespace vigra
+                 }
+             }
+ 
++#ifdef _WIN32
++            void teardown(int a_distance_norm)
++#else
+             void teardown(int a_distance_norm __attribute__((unused)))
++#endif
+             {
+                 delete z_scratch_buffer_;
+                 delete d_scratch_buffer_;
