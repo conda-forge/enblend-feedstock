@@ -15,6 +15,7 @@ source:
   sha256: b9510a419cb23f2964d6095bc295f9b19097362c05723425e78b0497741dcc17
   patches:
     - windows_opencl_compatibility.patch
+    - linux_opencl_dont_fail_no_platform_found.patch
     # Remove once we move to gcc 9+
     - experimental_filesystem.patch  # [linux]
     # Use of std::filesystem requires macOS 10.15+
@@ -65,9 +66,9 @@ requirements:
     - ocl_icd_wrapper_apple  # [osx]
 
 test:
-  requires:
+  # requires:
     # Question??? is this the correct way to do this? what should the user depend on?
-    - pocl  >=0.14      # [linux]
+  #   - pocl  >=0.14      # [linux]
   commands:
     - enblend --help
     - enfuse --help
