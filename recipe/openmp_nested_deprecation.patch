@@ -1,0 +1,49 @@
+diff --git a/src/openmp_def.h b/src/openmp_def.h
+index e09d579..c0b7e1c 100644
+--- a/src/openmp_def.h
++++ b/src/openmp_def.h
+@@ -100,8 +100,8 @@ inline int omp_get_num_procs() {return 1;}
+ inline void omp_set_dynamic(int) {}
+ inline int omp_get_dynamic() {return 0;}
+ inline int omp_in_parallel() {return 0;}
+-inline void omp_set_nested(int) {}
+-inline int omp_get_nested() {return 0;}
++inline void omp_set_max_active_levels(int) {}
++inline int omp_get_max_active_levels() {return 0;}
+ 
+ #if 0
+ typedef enum omp_sched_t
+@@ -143,10 +143,10 @@ namespace omp
+ inline static bool
+ have_openmp_nested()
+ {
+-    const int openmp_nested = omp_get_nested();
+-    omp_set_nested(true);
+-    const bool result = omp_get_nested() != 0;
+-    omp_set_nested(openmp_nested);
++    const int openmp_nested = omp_get_max_active_levels();
++    omp_set_max_active_levels(true);
++    const bool result = omp_get_max_active_levels() != 0;
++    omp_set_max_active_levels(openmp_nested);
+     return result;
+ }
+ 
+@@ -172,14 +172,14 @@ namespace omp
+     class scoped_nested
+     {
+     public:
+-        scoped_nested() : level_(omp_get_nested()) {}
++        scoped_nested() : level_(omp_get_max_active_levels()) {}
+ 
+-        explicit scoped_nested(bool allow_nested) : level_(omp_get_nested())
++        explicit scoped_nested(bool allow_nested) : level_(omp_get_max_active_levels())
+         {
+-            omp_set_nested(static_cast<int>(allow_nested));
++            omp_set_max_active_levels(static_cast<int>(allow_nested));
+         }
+ 
+-        ~scoped_nested() {omp_set_nested(level_);}
++        ~scoped_nested() {omp_set_max_active_levels(level_);}
+ 
+         int level() const {return level_;}
+ 
