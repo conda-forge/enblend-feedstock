@@ -1,5 +1,5 @@
 diff --git a/src/openmp_def.h b/src/openmp_def.h
-index e09d579..c0b7e1c 100644
+index e09d579..ea1407e 100644
 --- a/src/openmp_def.h
 +++ b/src/openmp_def.h
 @@ -100,8 +100,8 @@ inline int omp_get_num_procs() {return 1;}
@@ -13,22 +13,26 @@ index e09d579..c0b7e1c 100644
  
  #if 0
  typedef enum omp_sched_t
-@@ -143,10 +143,10 @@ namespace omp
- inline static bool
- have_openmp_nested()
- {
+@@ -138,18 +138,6 @@ namespace omp
+ #endif // _OPENMP >= 200505
+ 
+ 
+-// Answer whether the underlying OpenMP implementation really (thinks
+-// that it) supports nested parallelism.
+-inline static bool
+-have_openmp_nested()
+-{
 -    const int openmp_nested = omp_get_nested();
 -    omp_set_nested(true);
 -    const bool result = omp_get_nested() != 0;
 -    omp_set_nested(openmp_nested);
-+    const int openmp_nested = omp_get_max_active_levels();
-+    omp_set_max_active_levels(true);
-+    const bool result = omp_get_max_active_levels() != 0;
-+    omp_set_max_active_levels(openmp_nested);
-     return result;
- }
+-    return result;
+-}
+-
  
-@@ -172,14 +172,14 @@ namespace omp
+ // Answer whether the underlying OpenMP implementation really (thinks
+ // that it) supports dynamic adjustment of the number of threads.
+@@ -172,14 +160,14 @@ namespace omp
      class scoped_nested
      {
      public:
