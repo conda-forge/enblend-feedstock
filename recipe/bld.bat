@@ -7,7 +7,6 @@ cmake -LAH -G Ninja                                                       ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX%                                  ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%                               ^
     -DENABLE_OPENMP=ON                                                    ^
-    -DENABLE_OPENCL=ON                                                    ^
     ..
 
 ninja install
