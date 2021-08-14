@@ -29,7 +29,7 @@ source:
     - openmp_nested_deprecation.patch  # [not win]
 
 build:
-  number: 5
+  number: 6
 
 requirements:
   build:
