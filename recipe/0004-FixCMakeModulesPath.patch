@@ -1,0 +1,12 @@
+--- a/CMakeLists.txt	2016-03-28 13:17:04.000000000 -0400
++++ b/CMakeLists.txt	2022-05-31 21:01:35.242319176 -0400
+@@ -19,7 +19,8 @@
+ # For now, reuse the hugin modules directory
+ #
+ # Try to find ...
+-set(CMAKE_MODULE_PATH) # overwrite cache
++set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
++    ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules)
+ find_file(CMAKE_MODULE_PATH CMakeModules
+   "${CMAKE_SOURCE_DIR}"
+   "${CMAKE_SOURCE_DIR}/../hugin"
