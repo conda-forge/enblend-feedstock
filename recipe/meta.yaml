@@ -27,6 +27,7 @@ source:
     # But windows compilers don't have omp_get_max_active_levels
     # as of 2021/03/28 on conda-forge
     - openmp_nested_deprecation.patch  # [not win]
+    - 0004-FixCMakeModulesPath.patch
 
 build:
   number: 7
