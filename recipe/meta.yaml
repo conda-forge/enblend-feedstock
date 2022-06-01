@@ -30,7 +30,7 @@ source:
     - 0004-FixCMakeModulesPath.patch
 
 build:
-  number: 7
+  number: 8
 
 requirements:
   build:
