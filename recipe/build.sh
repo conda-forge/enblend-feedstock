@@ -10,7 +10,9 @@ fi
 
 # Use of clock_gettime requires librt on platforms with glibc < v2.17
 if [[ ${target_platform} =~ .*linux.* ]]; then
-    export LDFLAGS="-lrt -Wl,--as-needed"
+    # we need lindl for dynamic loading on linux
+    # not sure how to submit patches upstsream....
+    export LDFLAGS="-ldl -lrt -Wl,--as-needed"
 fi
 
 cmake ${CMAKE_ARGS} \
