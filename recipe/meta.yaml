@@ -30,7 +30,7 @@ source:
     - 0004-FixCMakeModulesPath.patch
 
 build:
-  number: 9
+  number: 10
 
 requirements:
   build:
@@ -41,7 +41,7 @@ requirements:
     - ninja  # [win]
   host:
     - libpng
-    - jpeg
+    - libjpeg-turbo
     - libtiff
     - lcms2
     - openexr
