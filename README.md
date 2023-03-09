@@ -1,11 +1,11 @@
-About enblend
-=============
+About enblend-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/enblend-feedstock/blob/main/LICENSE.txt)
 
 Home: http://enblend.sourceforge.net/
 
 Package license: GPL-2.0-only
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/enblend-feedstock/blob/main/LICENSE.txt)
 
 Summary: Enblend combines images that overlap like this into a single large image with no seams.
 

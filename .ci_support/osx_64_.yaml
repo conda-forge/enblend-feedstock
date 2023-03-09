@@ -14,12 +14,12 @@ cxx_compiler_version:
 - '14'
 gsl:
 - '2.7'
-jpeg:
-- '9'
 libblas:
 - 3.9 *netlib
 libcblas:
 - 3.9 *netlib
+libjpeg_turbo:
+- 2.1.5
 libpng:
 - '1.6'
 libtiff:
