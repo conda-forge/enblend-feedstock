@@ -1,0 +1,13 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6ec0cb5..5aa9757 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -105,7 +105,7 @@ set(additional_libs)
+ if (WIN32)
+   list(APPEND ENBLEND_SOURCES win32helpers/delayHelper.h)
+   list(APPEND ENFUSE_SOURCES win32helpers/delayHelper.h)
+-  add_subdirectory(win32helpers)
++  # add_subdirectory(win32helpers)
+   list(APPEND additional_libs getopt)
+ endif()
+ 
