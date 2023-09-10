@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e67fc09..a085543 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,6 +10,10 @@ cmake_minimum_required(VERSION 3.8)
+ 
+ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
+ 
++if(POLICY CMP0127)
++  cmake_policy(SET CMP0127 OLD)
++endif()
++
+ project(enblend)
+ IF(NOT MSVC)
+   SET(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel" FORCE)

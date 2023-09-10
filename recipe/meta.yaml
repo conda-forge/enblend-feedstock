@@ -27,6 +27,8 @@ source:
     - openmp_nested_deprecation.patch  # [not win]
     - 0004-FixCMakeModulesPath.patch
     - remove_usage_of_binary_function.patch
+    # https://sourceforge.net/p/enblend/code/ci/0f423c72e51872698fe2985ca3bd453961ffe4e0/
+    - cmake_3.22_compatibility.patch
 
 build:
   number: 11
