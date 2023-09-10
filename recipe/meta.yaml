@@ -28,6 +28,7 @@ source:
     # as of 2021/03/28 on conda-forge
     - openmp_nested_deprecation.patch  # [not win]
     - 0004-FixCMakeModulesPath.patch
+    - remove_usage_of_binary_function.patch
 
 build:
   number: 11
