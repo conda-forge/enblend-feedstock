@@ -1,3 +1,61 @@
+diff --git a/src/enfuse.h b/src/enfuse.h
+index 9827eb8..79f94d9 100644
+--- a/src/enfuse.h
++++ b/src/enfuse.h
+@@ -621,7 +621,7 @@ protected:
+ 
+ 
+ template <typename InputType, typename InputAccessor, typename ResultType>
+-class ExposureFunctor : public std::unary_function<InputType, ResultType> {
++class ExposureFunctor {
+ public:
+     ExposureFunctor(double weight, ExposureWeight* weight_function, const InputAccessor& a) :
+         weight_(weight), weight_function_(weight_function), acc_(a) {}
+@@ -652,7 +652,7 @@ protected:
+ 
+ 
+ template <typename InputType, typename InputAccessor, typename ResultType>
+-class CutoffExposureFunctor : public std::unary_function<InputType, ResultType> {
++class CutoffExposureFunctor {
+ public:
+     CutoffExposureFunctor(double weight, ExposureWeight* weight_function, InputAccessor a,
+                           const AlternativePercentage& lc, const AlternativePercentage& uc,
+@@ -731,7 +731,7 @@ protected:
+ 
+ 
+ template <typename InputType, typename ResultType>
+-class SaturationFunctor : public std::unary_function<InputType, ResultType> {
++class SaturationFunctor {
+ public:
+     SaturationFunctor(double w) : weight(w) {}
+ 
+@@ -781,7 +781,7 @@ protected:
+ 
+ 
+ template <typename InputType, typename ScaleType, typename ResultType>
+-class ContrastFunctor : public std::unary_function<InputType, ResultType> {
++class ContrastFunctor {
+ public:
+     ContrastFunctor(double w) : weight(w) {}
+ 
+@@ -830,7 +830,7 @@ protected:
+ 
+ 
+ template <typename InputType, typename ResultType>
+-class EntropyFunctor : public std::unary_function<InputType, ResultType> {
++class EntropyFunctor {
+ public:
+     typedef vigra::NumericTraits<InputType> InputTraits;
+     typedef vigra::NumericTraits<ResultType> ResultTraits;
+@@ -892,7 +892,7 @@ struct MagnitudeAccessor
+ 
+ 
+ template <typename InputType, typename ResultType>
+-class ClampingFunctor : public std::unary_function<InputType, ResultType>
++class ClampingFunctor
+ {
+ public:
+     typedef vigra::NumericTraits<InputType> InputTraits;
 diff --git a/src/fillpolygon.hxx b/src/fillpolygon.hxx
 index dda332a..1dab593 100644
 --- a/src/fillpolygon.hxx
@@ -12,6 +70,22 @@ index dda332a..1dab593 100644
          {
              bool operator()(const SegmentType& s, const SegmentType& t) const
              {
+diff --git a/src/layer_selection/selector.cc b/src/layer_selection/selector.cc
+index c6fbfcd..329709b 100644
+--- a/src/layer_selection/selector.cc
++++ b/src/layer_selection/selector.cc
+@@ -37,9 +37,9 @@
+ extern const std::string command;
+ 
+ 
+-template <class iterator, class unary_function>
++template <class iterator, class Func>
+ static std::string
+-mapconcat(iterator a_begin, iterator an_end, unary_function a_function, const std::string& a_separator)
++mapconcat(iterator a_begin, iterator an_end, Func a_function, const std::string& a_separator)
+ {
+     if (a_begin == an_end)
+     {
 diff --git a/src/path.h b/src/path.h
 index f35947f..2980704 100644
 --- a/src/path.h
