@@ -1,5 +1,6 @@
 mkdir build
 cd build
+mamba repoquery whoneeds graphviz
 
 cmake -LAH -G Ninja                                                       ^
     -DCMAKE_BUILD_TYPE="Release"                                          ^

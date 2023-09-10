@@ -62,6 +62,7 @@ requirements:
     # dependency at runtime
     - ocl-icd                    # [linux]
     - khronos-opencl-icd-loader  # [not linux]
+    - getopt-win32                                        # [win]
   run:
     - vigra
     - gsl
