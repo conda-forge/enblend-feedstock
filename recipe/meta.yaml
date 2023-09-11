@@ -16,8 +16,6 @@ source:
   patches:
     - windows_opencl_compatibility.patch
     - linux_opencl_dont_fail_no_platform_found.patch
-    # Remove once we move to gcc 9+
-    - experimental_filesystem.patch  # [linux]
     # Use of std::filesystem requires macOS 10.15+
     - 0001-Revert-Update-filenameparse.cc-module-to-reflect-the.patch  # [osx]
     - 0002-Make-CMAKE_INSTALL_PREFIX-override-conditional.patch
@@ -28,9 +26,13 @@ source:
     # as of 2021/03/28 on conda-forge
     - openmp_nested_deprecation.patch  # [not win]
     - 0004-FixCMakeModulesPath.patch
+    - remove_usage_of_binary_function.patch
+    # https://sourceforge.net/p/enblend/code/ci/0f423c72e51872698fe2985ca3bd453961ffe4e0/
+    - cmake_3.22_compatibility.patch
+    - no_need_for_getopt.patch
 
 build:
-  number: 10
+  number: 11
 
 requirements:
   build:
@@ -60,9 +62,7 @@ requirements:
     # dependency at runtime
     - ocl-icd                    # [linux]
     - khronos-opencl-icd-loader  # [not linux]
-  run:
-    - vigra
-    - gsl
+    - getopt-win32               # [win]
 
 test:
   commands:
