@@ -32,7 +32,6 @@ source:
     - no_need_for_getopt.patch
 
 build:
-  skip: true  # [not win]
   number: 11
 
 requirements:
