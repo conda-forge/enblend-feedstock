@@ -10,4 +10,4 @@ cmake -LAH -G Ninja                                                       ^
     -DENABLE_OPENCL=ON                                                    ^
     ..
 
-ninja install
+ninja install -j1
