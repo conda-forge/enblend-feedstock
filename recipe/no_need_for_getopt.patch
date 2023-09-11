@@ -11,6 +11,19 @@ index 6ec0cb5..5aa9757 100644
    list(APPEND additional_libs getopt)
  endif()
  
+diff --git a/src/enblend.cc b/src/enblend.cc
+index 43ac5d4..cf9e360 100644
+--- a/src/enblend.cc
++++ b/src/enblend.cc
+@@ -52,8 +52,6 @@
+ #include <vector>
+ 
+ #include <getopt.h>
+-extern "C" char *optarg;
+-extern "C" int optind;
+ 
+ #ifndef _MSC_VER
+ #include <fenv.h>
 diff --git a/src/enfuse.cc b/src/enfuse.cc
 index cb7770a..653b1dc 100644
 --- a/src/enfuse.cc
