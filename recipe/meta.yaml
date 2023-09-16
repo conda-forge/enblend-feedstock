@@ -32,7 +32,7 @@ source:
     - no_need_for_getopt.patch
 
 build:
-  number: 11
+  number: 12
 
 requirements:
   build:
