@@ -60,7 +60,7 @@ requirements:
     # https://github.com/conda-forge/conda-forge-pinning-feedstock/issues/1379
     # I tried compiling with the 2.0.13 headers, but it didn't work
     # enblend code is quite old. Needs migration to get to 2.0.13
-    - clhpp 2.0.10               # [not (aarch64 or ppc64le)
+    - clhpp 2.0.10               # [not (aarch64 or ppc64le)]
     # While the source only depends on the clhpp headers
     # depending on ocl-icd will ensure we have the correct run-export
     # dependency at runtime
