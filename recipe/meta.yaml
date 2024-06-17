@@ -32,7 +32,7 @@ source:
     - no_need_for_getopt.patch
 
 build:
-  number: 13
+  number: 14
 
 requirements:
   build:
@@ -48,7 +48,7 @@ requirements:
     - lcms2
     - openexr
     - gsl
-    - vigra
+    - libvigra
     - libblas
     - libcblas
     - perl
