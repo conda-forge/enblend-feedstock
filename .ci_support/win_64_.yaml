@@ -1,5 +1,7 @@
 c_compiler:
 - vs2019
+c_stdlib:
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
@@ -20,6 +22,8 @@ libpng:
 - '1.6'
 libtiff:
 - '4.6'
+libvigra:
+- '1.11'
 openexr:
 - '3.2'
 perl:
