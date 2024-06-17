@@ -8,11 +8,11 @@ if [[ ${target_platform} =~ osx-64.* ]]; then
     export CXXFLAGS="${CXXFLAGS-} -D_LIBCPP_ENABLE_CXX17_REMOVED_FEATURES -Wno-register"
 fi
 
-# Use of clock_gettime requires librt on platforms with glibc < v2.17
-if [[ ${target_platform} =~ .*linux.* ]]; then
-    # we need lindl for dynamic loading on linux
-    # not sure how to submit patches upstsream....
-    export LDFLAGS="-ldl -lrt -Wl,--as-needed"
+# Combine both if statements into one
+if [[ ${target_platform} == "linux-ppc64le" || ${target_platform} == "linux-aarch64" ]]; then
+    ENABLE_OPENCL=OFF
+else
+    ENABLE_OPENCL=ON
 fi
 
 cmake ${CMAKE_ARGS} \
@@ -20,7 +20,7 @@ cmake ${CMAKE_ARGS} \
     -DCMAKE_PREFIX_PATH=${PREFIX}                                         \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}                                      \
     -DENABLE_OPENMP=ON                                                    \
-    -DENABLE_OPENCL=ON                                                    \
+    -DENABLE_OPENCL=${ENABLE_OPENCL}                                      \
     ..
 
 make -j${CPU_COUNT}
