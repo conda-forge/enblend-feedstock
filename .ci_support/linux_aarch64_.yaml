@@ -39,7 +39,7 @@ libtiff:
 libvigra:
 - '1.12'
 openexr:
-- '3.2'
+- '3.3'
 perl:
 - 5.32.1
 target_platform:
