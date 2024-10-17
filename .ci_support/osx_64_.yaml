@@ -31,13 +31,13 @@ libjpeg_turbo:
 libpng:
 - '1.6'
 libtiff:
-- '4.6'
+- '4.7'
 libvigra:
 - '1.12'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openexr:
-- '3.2'
+- '3.3'
 perl:
 - 5.32.1
 target_platform:
