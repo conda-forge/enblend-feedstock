@@ -31,7 +31,7 @@ libjpeg_turbo:
 libpng:
 - '1.6'
 libtiff:
-- '4.6'
+- '4.7'
 libvigra:
 - '1.12'
 openexr:
