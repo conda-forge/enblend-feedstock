@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 c_compiler:
 - clang
 c_compiler_version:
-- '17'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -17,15 +17,15 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '17'
+- '19'
 gsl:
 - '2.7'
 lcms2:
 - '2'
 libblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 libcblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 libjpeg_turbo:
 - '3'
 libpng:
@@ -37,7 +37,7 @@ libvigra:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 openexr:
-- '3.3'
+- '3.4'
 perl:
 - 5.32.1
 target_platform:
