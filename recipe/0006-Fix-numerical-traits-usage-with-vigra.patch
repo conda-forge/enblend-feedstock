@@ -1,0 +1,25 @@
+From bf07f466063fa59c0164a97d4852d6e6c175a028 Mon Sep 17 00:00:00 2001
+From: Mark Harfouche <mark.harfouche@gmail.com>
+Date: Tue, 9 Sep 2025 13:15:59 -0400
+Subject: [PATCH 6/6] Fix numerical traits usage with vigra
+
+---
+ src/fixmath.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/fixmath.h b/src/fixmath.h
+index f10333f..07e9ca7 100644
+--- a/src/fixmath.h
++++ b/src/fixmath.h
+@@ -362,7 +362,7 @@ template <typename DestPixelType, typename PyramidPixelType, int PyramidIntegerB
+ using ConvertPyramidToScalarFunctor =
+ class SpecializedConvertPyramidToScalarFunctor
+                       <DestPixelType, PyramidPixelType,
+-                       std::numeric_limits<typename vigra::NumericTraits<PyramidPixelType>::ValueType>::is_integer,
++                       typename vigra::NumericTraits<PyramidPixelType>::isIntegral,
+                        PyramidIntegerBits, PyramidFractionBits>;
+ 
+ 
+-- 
+2.51.0
+
