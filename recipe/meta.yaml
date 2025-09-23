@@ -31,8 +31,12 @@ source:
     - cmake_3.22_compatibility.patch
     - no_need_for_getopt.patch
 
+    # Fixes for
+    - 0005-attempt-to-fix-errors-related-to-dynamic_loader-link.patch
+    - 0006-Fixes-compilation-with-new-Visual-Studio-compiler.patch
+
 build:
-  number: 16
+  number: 17
 
 requirements:
   build:
