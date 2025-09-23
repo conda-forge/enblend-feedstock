@@ -33,7 +33,7 @@ source:
 
     # Fixes for
     - 0005-attempt-to-fix-errors-related-to-dynamic_loader-link.patch
-    - 0006-Fix-numerical-traits-usage-with-vigra.patch
+    - 0006-Fixes-compilation-with-new-Visual-Studio-compiler.patch
 
 build:
   number: 17
