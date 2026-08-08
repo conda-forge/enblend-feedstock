@@ -5,7 +5,7 @@
 
 package:
   name: enblend
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   # hmaarrfk's private mirror, making it possible to download the source
