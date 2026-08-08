@@ -5,7 +5,7 @@
 
 package:
   name: enblend
-  version: {{ version }}
+  version: "{{ version }}"
 
 source:
   # hmaarrfk's private mirror, making it possible to download the source
@@ -36,7 +36,7 @@ source:
     - 0006-Fixes-compilation-with-new-Visual-Studio-compiler.patch
 
 build:
-  number: 17
+  number: 18
 
 requirements:
   build:
