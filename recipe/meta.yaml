@@ -36,7 +36,7 @@ source:
     - 0006-Fixes-compilation-with-new-Visual-Studio-compiler.patch
 
 build:
-  number: 18
+  number: 19
 
 requirements:
   build:
